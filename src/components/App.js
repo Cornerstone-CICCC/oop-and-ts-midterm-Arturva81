@@ -7,7 +7,39 @@ import { Footer } from "./Footer.js";
 export class App extends Component {
   constructor(props) {
     super(props)
-    this.cartList = null
+    this.currentPage = 'home'
+    this.mainContent = null
+  }
+
+  navigateToHome() {
+    this.currentPage = 'home'
+    this.renderPage()
+  }
+
+  navigateToCart() {
+    this.currentPage = 'cart'
+    this.renderPage()
+  }
+
+  renderPage() {
+    if (!this.mainContent) return
+    
+    this.mainContent.innerHTML = ''
+    
+    if (this.currentPage === 'home') {
+      const productList = new ProductList({
+        onAddToCart: (product) => {
+          this.props.cartContext.addToCart(product)
+        }
+      })
+      productList.mount(this.mainContent)
+    } else if (this.currentPage === 'cart') {
+      const cartList = new CartList({
+        cartContext: this.props.cartContext,
+        isPage: true
+      })
+      cartList.mount(this.mainContent)
+    }
   }
 
   render() {
@@ -16,30 +48,16 @@ export class App extends Component {
     
     const header = new Header({
       cartContext: this.props.cartContext,
-      onCartClick: () => {
-        if (this.cartList) {
-          this.cartList.toggleCart()
-        }
-      }
+      onHomeClick: () => this.navigateToHome(),
+      onCartClick: () => this.navigateToCart()
     })
     header.mount(app)
     
-    const main = document.createElement('main')
-    main.className = 'main-content'
+    this.mainContent = document.createElement('main')
+    this.mainContent.className = 'main-content'
+    app.appendChild(this.mainContent)
     
-    const productList = new ProductList({
-      onAddToCart: (product) => {
-        this.props.cartContext.addToCart(product)
-      }
-    })
-    productList.mount(main)
-    
-    app.appendChild(main)
-    
-    this.cartList = new CartList({
-      cartContext: this.props.cartContext
-    })
-    this.cartList.mount(app)
+    this.renderPage()
     
     const footer = new Footer()
     footer.mount(app)
