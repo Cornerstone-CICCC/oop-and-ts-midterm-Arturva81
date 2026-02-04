@@ -16,18 +16,24 @@ body {
 }
 
 .header {
-  background-color: white;
-  padding: 20px 40px;
+  background-color: blue;
+  padding: 20px 60px;
   border-bottom: 4px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .header h1 {
   font-size: 3rem;
   font-weight: 900;
-  color: black;
+  color: yellow;
 }
 
 .header-icons {
@@ -38,23 +44,23 @@ body {
 
 .home-icon {
   font-size: 2.5rem;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
 .home-icon:hover {
-  color: #333;
+  color: lightgray;
 }
 
 .cart-icon {
   font-size: 2.5rem;
-  color: black;
+  color: white;
   cursor: pointer;
   position: relative;
 }
 
 .cart-icon:hover {
-  color: #333;
+  color: lightgray;
 }
 
 .cart-count {
@@ -303,6 +309,13 @@ body {
   margin-top: 5px;
 }
 
+.cart-item-subtotal {
+  font-weight: 700;
+  color: black;
+  margin-top: 5px;
+  font-size: 0.95rem;
+}
+
 .quantity-btn {
   background-color: black;
   color: white;
@@ -378,13 +391,24 @@ body {
 }
 
 .footer {
-  background-color: white;
+  background-color: blue;
   border-top: 4px solid black;
   padding: 20px 40px;
   text-align: center;
   font-weight: 600;
   color: #666;
   margin-top: auto;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.footer p {
+  margin: 0;
+  color: white;
 }
 
 /* Cart Page Styles */
@@ -392,6 +416,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+  min-height: calc(100vh - 200px);
 }
 
 .cart-page-title {
@@ -440,6 +465,13 @@ body {
   align-items: center;
   gap: 15px;
   margin-top: 10px;
+}
+
+.cart-item-page-subtotal {
+  font-weight: 700;
+  color: black;
+  margin-top: 10px;
+  font-size: 1.1rem;
 }
 
 .quantity-btn-page {
@@ -540,7 +572,7 @@ body {
 
 @media (max-width: 1024px) {
   .header {
-    padding: 15px 30px;
+    padding: 15px 40px;
   }
   
   .header h1 {
@@ -563,7 +595,7 @@ body {
 
 @media (max-width: 767px) {
   .header {
-    padding: 15px 20px;
+    padding: 15px 30px;
   }
   
   .header h1 {

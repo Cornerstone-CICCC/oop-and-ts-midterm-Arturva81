@@ -23,7 +23,7 @@ export class Header extends Component {
     const header = document.createElement('header')
     header.className = 'header'
     header.innerHTML = `
-      <h1>OOP Store</h1>
+      <h1>WorstBuy</h1>
       <div class="header-icons">
         <div class="home-icon">
           <i class="fa-solid fa-house"></i>

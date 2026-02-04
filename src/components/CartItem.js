@@ -3,6 +3,7 @@ import { Component } from "../common/Component.js";
 export class CartItem extends Component {
   render() {
     const { item, isPage, onUpdateQuantity, onRemove } = this.props
+    const subtotal = (item.price * item.quantity).toFixed(2)
     
     const cartItem = document.createElement('div')
     cartItem.className = isPage ? 'cart-item-page' : 'cart-item'
@@ -18,6 +19,7 @@ export class CartItem extends Component {
             <span class="quantity-value-page">${item.quantity}</span>
             <button class="quantity-btn-page increase">+</button>
           </div>
+          <div class="cart-item-subtotal">Subtotal: $${subtotal}</div>
           <button class="remove-btn-page">Remove</button>
         </div>
       `
@@ -32,6 +34,7 @@ export class CartItem extends Component {
             <span class="quantity-value">${item.quantity}</span>
             <button class="quantity-btn increase">+</button>
           </div>
+          <div class="cart-item-subtotal">Subtotal: $${subtotal}</div>
           <button class="remove-btn">Remove</button>
         </div>
       `
